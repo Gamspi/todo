@@ -1,0 +1,17 @@
+
+@import "styles/variables";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    margin: 0;
+    font-family: $fRoboto;
+    font-weight: 300;
+    font-size: 6rem;
+    line-height: 1.167;
+    letter-spacing: -0.01562em;
+    text-align: center;
+}
