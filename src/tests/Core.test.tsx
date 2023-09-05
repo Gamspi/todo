@@ -1,9 +1,29 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import {fireEvent, render, screen} from '@testing-library/react';
 import Core from '../App';
 
-test('renders learn react link', () => {
-  render(<Core />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+test('to do test', () => {
+    const TEST_WORD = 'test'
+    render(<Core/>);
+    const inputContainerElement = screen.getByTestId('add-input-test')
+    expect(inputContainerElement).toBeInTheDocument();
+    const inputElement = inputContainerElement.querySelector('input')
+    expect(inputElement).toBeInTheDocument();
+    expect(inputElement).toContainHTML('');
+    fireEvent.input(inputElement, {
+        target: {
+            value: TEST_WORD
+        }
+    })
+    expect(inputElement).toContainHTML(TEST_WORD);
+    fireEvent.submit(inputElement)
+    expect(inputElement).toContainHTML('');
+    const item = screen.getByText(TEST_WORD)
+    expect(item).toBeInTheDocument()
+    fireEvent.click(item)
+
+    const clearBtn = screen.getByTestId('clear-btn')
+    expect(clearBtn).toBeInTheDocument()
+    fireEvent.click(clearBtn)
+    expect(screen.queryByText(TEST_WORD)).toBeNull()
 });

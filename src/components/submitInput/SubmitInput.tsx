@@ -5,10 +5,11 @@ import SendIcon from '@mui/icons-material/Send';
 type PropType = {
     label: string
     value: string
-    isError?: boolean,
+    isError?: boolean
     onChange: (event: ChangeEvent<HTMLInputElement>) => void
+    dataTestId?: string
 }
-const SubmitInput = ({isError, onChange, value, label}: PropType) => {
+const SubmitInput = ({isError, onChange, value, label, dataTestId}: PropType) => {
     const id = useId()
     return (
         <FormControl fullWidth>
@@ -17,6 +18,7 @@ const SubmitInput = ({isError, onChange, value, label}: PropType) => {
                 error={isError}
                 value={value}
                 onChange={onChange}
+                data-testid={dataTestId}
                 endAdornment={
                     <InputAdornment position="end">
                         <IconButton

@@ -37,6 +37,7 @@ const AppLayout = () => {
                         isError={toDoInput.isError}
                         onChange={handelSetToDoValue}
                         label='What needs to be done?'
+                        dataTestId='add-input-test'
                     />
                 </form>
                 <div className='app-layout__actions'>
@@ -47,10 +48,10 @@ const AppLayout = () => {
                         onChange={handelFilterChange}
                     >
                         {filterList.map(item => (
-                            <ToggleButton value={item.value}>{item.label}</ToggleButton>
+                            <ToggleButton value={item.value} key={item.value}>{item.label}</ToggleButton>
                         ))}
                     </ToggleButtonGroup>
-                    <Button variant="contained" onClick={handelClearCompleted}>Clear completed</Button>
+                    <Button variant="contained" onClick={handelClearCompleted} data-testid='clear-btn'>Clear completed</Button>
                 </div>
                 <List className='app-layout__list'>
                     {computedList.map(item => (
